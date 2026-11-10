@@ -1,0 +1,4 @@
+#!/bin/bash
+# Wrapper script to run diff-shepherd with proper environment
+cd "$(dirname "$0")"
+exec npm run start -- "$@"

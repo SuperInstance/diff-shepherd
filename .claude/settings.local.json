@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm search:*)",
+      "WebSearch",
+      "Bash(git clone:*)",
+      "Bash(chmod:*)",
+      "Bash(bun install:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run start:*)",
+      "Bash(npx:*)",
+      "Bash(npm test:*)",
+      "Bash(npm run)",
+      "Bash(tmux:*)",
+      "Bash(node:*)",
+      "Bash(timeout:*)",
+      "Bash(stty sane:*)",
+      "Bash(reset:*)",
+      "Bash(kill:*)",
+      "Bash(npm run --help:*)",
+      "Bash(npm ls:*)",
+      "Bash(find:*)",
+      "Bash(echo:*)"
+    ]
+  }
+}

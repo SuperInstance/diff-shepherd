@@ -1,0 +1,93 @@
+{
+  "name": "diff-shepherd",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "A non-intrusive, batch-review interface for Claude Code changes",
+  "bin": {
+    "diff-shepherd": "./bin/diff-shepherd"
+  },
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "scripts": {
+    "start": "tsx src/cli.ts",
+    "ui": "./shepherd.sh",
+    "go": "./shepherd.sh",
+    "dev": "tsx src/cli.ts",
+    "mcp": "tsx src/index.ts",
+    "test": "tsx test-smoke.ts",
+    "test:smoke": "tsx test-smoke.ts"
+  },
+  "dependencies": {
+    "@types/blessed": "^0.1.27",
+    "blessed": "^0.1.81",
+    "chokidar": "^4.0.1",
+    "commander": "^14.0.2",
+    "diff": "^5.2.0",
+    "ink": "^6.6.0",
+    "ink-spinner": "^5.0.0",
+    "minimatch": "^10.1.1",
+    "react": "^19.2.3",
+    "terminal-kit": "^3.1.2"
+  },
+  "devDependencies": {
+    "@types/diff": "^5.2.2",
+    "@types/minimatch": "^5.1.2",
+    "@types/node": "^25.0.6",
+    "@types/react": "^19.2.7",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.2"
+  },
+  "mcpServers": {
+    "diff-shepherd": {
+      "command": "node",
+      "args": [
+        "-e",
+        "require('./src/index.ts')"
+      ]
+    }
+  },
+  "claude": {
+    "name": "Diff Shepherd",
+    "description": "Batch code review without breaking flow. Watch for file changes in a side panel and accept/reject in bulk.",
+    "tools": [
+      {
+        "name": "start_diff_shepherd",
+        "description": "Start Diff Shepherd to review code changes in a non-intrusive side panel",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "directory": {
+              "type": "string",
+              "description": "Directory to watch for changes (default: current working directory)"
+            },
+            "id": {
+              "type": "string",
+              "description": "Session identifier (default: 'shepherd-1')"
+            }
+          }
+        }
+      },
+      {
+        "name": "set_focus_file",
+        "description": "Set the file the user is currently editing for context-aware highlighting",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "filePath": {
+              "type": "string",
+              "description": "Path to the file the user is currently editing"
+            }
+          },
+          "required": [
+            "filePath"
+          ]
+        }
+      },
+      {
+        "name": "clear_focus_file",
+        "description": "Clear the manual focus file and enable auto-detection"
+      }
+    ]
+  }
+}

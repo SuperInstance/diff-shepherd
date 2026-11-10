@@ -1,0 +1,12 @@
+{
+  "pollInterval": 15000,
+  "diffDisplayStyle": "foreground",
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/*.log",
+    "**/.claude/**"
+  ]
+}
